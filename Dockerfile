@@ -1,7 +1,7 @@
 FROM nextjournal/docker-erlang:19.2.1
 MAINTAINER Holger Amann <holger@nextjournal.com>
 
-ARG ELIXIR_VERSION=1.3.1
+ARG ELIXIR_VERSION=1.4.1
 
 LABEL name="elixir" version=$ELIXIR_VERSION
 
