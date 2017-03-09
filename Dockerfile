@@ -1,4 +1,4 @@
-FROM nextjournal/docker-erlang:19.2.1
+FROM nextjournal/docker-erlang:19.2.1-test-server
 MAINTAINER Holger Amann <holger@nextjournal.com>
 
 ARG ELIXIR_VERSION=1.4.1
