@@ -21,6 +21,7 @@ RUN set -xe \
 
 ENV PATH $PATH:/opt/elixir-${ELIXIR_VERSION}/bin
 
-RUN mix local.hex --force
+RUN mix local.hex --force \
+    && mix local.rebar --force
 
 CMD ["/bin/sh"]
