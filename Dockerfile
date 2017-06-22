@@ -11,7 +11,8 @@ ARG ERLANG_DOWNLOAD_URL="https://github.com/erlang/otp/archive/OTP-${ERLANG_VERS
 ARG TEST_SERVER_URL="http://erlang.org/download/test_server/test_server-${TEST_SERVER_VERSION}.tar.gz"
 
 RUN set -xe \
-    && apk --update add --virtual build-dependencies curl ca-certificates build-base autoconf perl ncurses-dev openssl-dev unixodbc-dev tar ncurses openssl unixodbc \
+    && apk --update add --virtual build-dependencies curl ca-certificates autoconf perl ncurses-dev openssl-dev unixodbc-dev tar ncurses openssl unixodbc \
+    && apk --update add build-base \
     && curl -fSL -o otp-src.tar.gz "$ERLANG_DOWNLOAD_URL" \
     && curl -fSL -o test-server.tar.gz "$TEST_SERVER_URL" \
     && mkdir -p /usr/src/otp-src \
@@ -58,7 +59,6 @@ RUN set -xe \
     && rm -rf \
       /var/cache/apk/* \
       /tmp/*
-
 
 ENV PATH $PATH:/opt/elixir-${ELIXIR_VERSION}/bin
 
