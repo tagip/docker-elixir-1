@@ -1,7 +1,7 @@
 FROM docker:17.05.0-ce-git
 
 # Install erlang
-ARG ERLANG_VERSION=19.2.1
+ARG ERLANG_VERSION=20.1
 ARG TEST_SERVER_VERSION=3.1.1
 
 LABEL name="erlang" version=$ERLANG_VERSION
@@ -43,7 +43,7 @@ RUN set -xe \
       /usr/src
 
 # Install elixir
-ARG ELIXIR_VERSION=1.4.2
+ARG ELIXIR_VERSION=1.5.2
 
 LABEL name="elixir" version=$ELIXIR_VERSION
 
