@@ -1,4 +1,4 @@
-FROM docker:17.05.0-ce-git
+FROM docker:rc-git
 
 # Install erlang
 ARG ERLANG_VERSION=20.0
