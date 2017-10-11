@@ -7,7 +7,13 @@ ARG DISABLED_APPS='megaco wx debugger jinterface orber reltool observer gs et'
 ARG ERLANG_DOWNLOAD_URL="https://github.com/erlang/otp/archive/OTP-${ERLANG_VERSION}.tar.gz"
 
 RUN set -xe \
-    && apk --update add --virtual build-dependencies curl ca-certificates build-base autoconf perl ncurses-dev openssl-dev unixodbc-dev tar ncurses openssl unixodbc \
+    && apk --update --no-cache add build-base openssl ca-certificates ncurses-libs ncurses \
+    && rm -rf \
+      /var/cache/apk/* \
+      /tmp/*
+    
+RUN set -xe \
+    && apk --update add --virtual build-dependencies curl ca-certificates autoconf perl ncurses-dev openssl-dev unixodbc-dev tar unixodbc \
     && curl -fSL -o otp-src.tar.gz "$ERLANG_DOWNLOAD_URL" \
     && mkdir -p /usr/src/otp-src \
     && tar -xzf otp-src.tar.gz -C /usr/src/otp-src --strip-components=1 \
@@ -38,8 +44,6 @@ ARG ELIXIR_VERSION=1.5.0
 
 RUN set -xe \
     && apk --update add --virtual build-dependencies wget ncurses-libs ca-certificates \
-    && apk --update add ncurses-libs \
-    && apk --update add openssl ca-certificates \
     && wget --no-check-certificate https://github.com/elixir-lang/elixir/releases/download/v${ELIXIR_VERSION}/Precompiled.zip \
     && mkdir -p /opt/elixir-${ELIXIR_VERSION}/ \
     && unzip Precompiled.zip -d /opt/elixir-${ELIXIR_VERSION}/ \
