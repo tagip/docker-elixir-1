@@ -50,6 +50,9 @@ RUN set -xe \
       /var/cache/apk/* \
       /tmp/*
 
+# Install hex
+RUN mix local.hex --force \
+    && mix local.rebar --force
 
 ENV PATH $PATH:/opt/elixir-${ELIXIR_VERSION}/bin
 
