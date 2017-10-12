@@ -61,4 +61,9 @@ ENV PATH $PATH:/opt/elixir-${ELIXIR_VERSION}/bin
 RUN mix local.hex --force \
     && mix local.rebar --force
 
+RUN git clone https://github.com/tagip/hex.git && \
+  cd hex && \
+  mix deps.get && \
+  mix install
+
 CMD ["/bin/sh"]
